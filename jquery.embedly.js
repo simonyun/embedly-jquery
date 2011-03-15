@@ -94,9 +94,13 @@
        }
 
        var processEmbed = function(oembed, dict) {
-           var _a, code, style, title;
-           if ((_a = oembed.type) === 'photo') {
+           var _a, code, style, title, imgSrc;
+           if ((_a = oembed.type) === 'photo' || _a === 'rich') {
                title = oembed.title || '';
+	       if (_a === 'rich') {
+		   alert(_a);
+	       }
+	       imgSrc = _a === 'photo' ? oembed.url : oembed.thumbnail_url;
                style = [];
                if (settings.addImageStyles) {
                    if (settings.maxWidth) {
@@ -109,11 +113,11 @@
                    }
                }
                style = style.join(';');
-               code = "<a href='" + dict.url + "' target='_blank'><img style='" + style + "' src='" + oembed.url + "' alt='" + title + "' /></a>";
+               code = "<a href='" + dict.url + "' target='_blank'><img style='" + style + "' src='" + imgSrc + "' alt='" + title + "' /></a>";
            } else if (_a === 'video') {
                code = oembed.html;
-           } else if (_a === 'rich') {
-               code = oembed.html;
+	       //} else if (_a === 'rich') {
+               //code = oembed.html;
            } else {
                title = oembed.title || dict.url;
                thumb = oembed.thumbnail_url ? '<img src="'+oembed.thumbnail_url+'" class="thumb" />' : '';
