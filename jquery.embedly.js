@@ -97,9 +97,6 @@
            var _a, code, style, title, imgSrc;
            if ((_a = oembed.type) === 'photo' || _a === 'rich') {
                title = oembed.title || '';
-	       if (_a === 'rich') {
-		   alert(_a);
-	       }
 	       imgSrc = _a === 'photo' ? oembed.url : oembed.thumbnail_url;
                style = [];
                if (settings.addImageStyles) {
