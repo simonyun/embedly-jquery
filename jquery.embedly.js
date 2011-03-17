@@ -115,6 +115,9 @@
                code = oembed.html;
 	       //} else if (_a === 'rich') {
                //code = oembed.html;
+	   } else if (_a === 'link') {
+	       description = oembed.title || oembed.description || dict.url;
+	       code = "<a href='" + dict.url + "'>" + description + "</a>";
            } else {
                title = oembed.title || dict.url;
                thumb = oembed.thumbnail_url ? '<img src="'+oembed.thumbnail_url+'" class="thumb" />' : '';
